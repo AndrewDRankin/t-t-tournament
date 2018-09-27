@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PrintName from './components/PrintName';
+import NameEntry from './components/NameEntry';
 
 
 const initial = [
@@ -26,6 +27,7 @@ class App extends Component {
                         <PrintName />
                     ))}; */}
                 </p>
+                <NameEntry />
             </Fragment>
         );
     }
