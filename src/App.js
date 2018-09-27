@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import PrintName from './components/PrintName';
+// import PrintName from './components/PrintName';
 import NameEntry from './components/NameEntry';
 
 
@@ -22,6 +22,9 @@ class App extends Component {
     render() {
         return (
             <Fragment>
+                <p>
+                    Table - Tennis - Tournament!
+                </p>
                 <p>
                     {/* {nameList.map((value) => (
                         <PrintName />
