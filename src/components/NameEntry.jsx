@@ -18,25 +18,24 @@ class NameEntry extends Component {
             name: name,
         }) 
     }
-
     addName(event) {
         event.preventDefault();
+        this.state.names.push(this.state.name)
         this.setState({
-            names: this.state.names.push(this.state.name),
+            names: this.state.names,
             name: "",
         })
     }
-
     render() {
         return (
             <Fragment>
                 <form>
-                    <input onChange={this.formInput} type="text" />
+                    <input onChange={this.formInput} type="text" value={this.state.name} />
                     <button onClick={this.addName} className="btn btn-primary">Add name</button>
                 </form>
                 <ul>
-                    {this.state.names.map((name) => {
-                        <li>{name}</li>
+                    {this.state.names.map((name, id) => {
+                        return (<li key={id}>{name}</li>);
                     })}
                 </ul>
             </Fragment>
