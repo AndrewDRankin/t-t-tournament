@@ -16,7 +16,7 @@ initial.map((object) => (
     nameList.push(Object.values(object))
 ));
 
-console.log(nameList);
+// console.log(nameList);
 
 class App extends Component {
     render() {

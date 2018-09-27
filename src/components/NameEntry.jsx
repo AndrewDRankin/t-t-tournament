@@ -6,8 +6,11 @@ class NameEntry extends Component {
         super(props);
         this.state = {
             name: "",
+            names: [],
         }
         this.formInput = this.formInput.bind(this);
+        this.addName = this.addName.bind(this);
+        console.log(this.state.names);
     }
     formInput(event) {
         const name = event.target.value;
@@ -16,13 +19,26 @@ class NameEntry extends Component {
         }) 
     }
 
+    addName(event) {
+        event.preventDefault();
+        this.setState({
+            names: this.state.names.push(this.state.name),
+            name: "",
+        })
+    }
+
     render() {
         return (
             <Fragment>
                 <form>
                     <input onChange={this.formInput} type="text" />
-                    <button className="btn btn-primary">Add name</button>
+                    <button onClick={this.addName} className="btn btn-primary">Add name</button>
                 </form>
+                <ul>
+                    {this.state.names.map((name) => {
+                        <li>{name}</li>
+                    })}
+                </ul>
             </Fragment>
         )
     }
