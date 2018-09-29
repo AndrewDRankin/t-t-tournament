@@ -38,6 +38,7 @@ class NameEntry extends Component {
     }
 
     render() {
+        let names = this.state.names;
         return (
             <Fragment>
                 <p>
@@ -53,14 +54,14 @@ class NameEntry extends Component {
                 <br />
                 <p>Tournament entrants:</p>
                 <div>
-                    {this.state.names.map((name, index) => {
+                    {names.map((name, index) => { // Was this.state.names
                         return (<p key={index}>Name: {name}</p>);
                     })}
                 </div>
 {/* Button only shows if there are two or more players */}
                 <div>
                     {this.state.nameCheck ?
-                        (<Link to={'/bracket'} className="btn btn-primary">
+                        (<Link to={'/bracket'} names={names} className="btn btn-primary">
                             Create Tournament
                         </Link>) : null
                     }

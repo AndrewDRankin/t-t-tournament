@@ -15,7 +15,6 @@ const TournamentBracket = ({names}) => {
         </Fragment>
     )
 };
-console.log(names);
 
 
 export default TournamentBracket;
