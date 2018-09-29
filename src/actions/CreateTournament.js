@@ -1,4 +1,4 @@
-const CreateTournament = () => {
+const CreateTournament = (randomise, state) => {
 
 }
 
