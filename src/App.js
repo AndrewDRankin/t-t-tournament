@@ -1,40 +1,22 @@
-import React, { Component, Fragment } from 'react';
-// import PrintName from './components/PrintName';
+import React, { Fragment } from 'react';
 import NameEntry from './components/NameEntry';
+import TournamentBracket from './components/TournamentBracket';
+import { BrowserRouter as Router, Route, } from 'react-router-dom'; 
 
 
-const initial = [
-    { name: "Aden Wells" },
-    { name: "Ricky Mason" },
-    { name: "Sam Maggs" },
-    { name: "Kye Buffery" }
-];
-
-let nameList = [];
-
-initial.map((object) => (
-    nameList.push(Object.values(object))
-));
-
-// console.log(nameList);
-
-class App extends Component {
-    render() {
-        return (
+const App = ({names}) => {
+    return (
+        <Router>
             <Fragment>
                 <p>
                     Table - Tennis - Tournament!
                 </p>
-                <p>
-                    {/* {nameList.map((value) => (
-                        <PrintName />
-                    ))}; */}
-                </p>
-                <NameEntry />
+                <Route exact path='/' component={NameEntry} />
+                <Route exact path='/bracket' component={TournamentBracket} names={names}/>
             </Fragment>
-        );
-    }
-}
+        </Router>
+    )
+};
 
 
 export default App;

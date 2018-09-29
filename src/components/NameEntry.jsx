@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 
 class NameEntry extends Component {
@@ -13,12 +14,14 @@ class NameEntry extends Component {
         this.addName = this.addName.bind(this);
         console.log(this.state.names);
     }
+    
     formInput(event) {
         const name = event.target.value;
         this.setState({
             name: name,
         }) 
     }
+
     addName(event) {
         event.preventDefault();
         this.state.names.push(this.state.name) // Had this in the setState, which was setting state to nothing before pushing
@@ -33,9 +36,7 @@ class NameEntry extends Component {
             nameCheck: nameCheck,
         })
     }
-    // createTournament() {
 
-    // }
     render() {
         return (
             <Fragment>
@@ -52,16 +53,16 @@ class NameEntry extends Component {
                 <br />
                 <p>Tournament entrants:</p>
                 <div>
-                    {this.state.names.map((name, id) => {
-                        return (<p key={id}>Name: {name}</p>);
+                    {this.state.names.map((name, index) => {
+                        return (<p key={index}>Name: {name}</p>);
                     })}
                 </div>
 {/* Button only shows if there are two or more players */}
                 <div>
                     {this.state.nameCheck ?
-                        (<button className="btn btn-primary">
+                        (<Link to={'/bracket'} className="btn btn-primary">
                             Create Tournament
-                        </button>) : null
+                        </Link>) : null
                     }
                 </div>
             </Fragment>
