@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import NameEntry from './components/NameEntry';
-import Tournament from './containers/Tournament';
+import TournamentBracket from './components/TournamentBracket';
 import { BrowserRouter as Router, Route, } from 'react-router-dom'; 
 
 
@@ -12,7 +12,7 @@ const App = ({names}) => {
                     Table - Tennis - Tournament!
                 </p>
                 <Route exact path='/' component={NameEntry} />
-                <Route exact path='/bracket' component={Tournament}/>
+                <Route exact path='/bracket' component={() => <TournamentBracket names={names} />} />
             </Fragment>
         </Router>
     )

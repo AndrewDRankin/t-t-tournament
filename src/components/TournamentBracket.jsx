@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 const TournamentBracket = ({names}) => {
@@ -11,7 +11,7 @@ const TournamentBracket = ({names}) => {
             <p>
                 {names}
             </p>
-            <Link to={'/'} className='btn btn-primary'>Start again!</Link>
+            {/* <Link to={'/'} className='btn btn-primary'>Start again!</Link> */}
         </Fragment>
     )
 };

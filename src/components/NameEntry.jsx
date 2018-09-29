@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import TournamentBracket from './TournamentBracket';
 
 
 class NameEntry extends Component {
@@ -9,10 +10,12 @@ class NameEntry extends Component {
             name: "",
             names: [],
             nameCheck: false,
+            readyToPlay: false,
         }
         this.formInput = this.formInput.bind(this);
         this.addName = this.addName.bind(this);
-        console.log(this.state.names);
+        this.readyToPlay = this.readyToPlay.bind(this);
+        // console.log(this.state.names);
     }
     
     formInput(event) {
@@ -37,33 +40,43 @@ class NameEntry extends Component {
         })
     }
 
+    readyToPlay() {
+        const readyToPlay = this.state.readyToPlay;
+        this.setState({
+            readyToPlay: !readyToPlay,
+        })
+    }
     render() {
         let names = this.state.names;
         return (
             <Fragment>
-                <p>
-                    Please add some players for your tournament
-                </p>
-                <b />
-                <form>
-                    <input onChange={this.formInput} type="text" value={this.state.name} />
-                    <button onClick={this.addName} className="btn btn-primary">
-                        Add name
-                    </button>
-                </form>
-                <br />
-                <p>Tournament entrants:</p>
-                <div>
-                    {names.map((name, index) => { // Was this.state.names
-                        return (<p key={index}>Name: {name}</p>);
-                    })}
-                </div>
+                {this.state.readyToPlay ? <TournamentBracket names={names} /> : (
+                    <Fragment>    
+                        <p>
+                            Please add some players for your tournament
+                        </p>
+                        <br />
+                        <form>
+                            <input onChange={this.formInput} type="text" value={this.state.name} />
+                            <button onClick={this.addName} className="btn btn-primary">
+                                Add name
+                            </button>
+                        </form>
+                        <br />
+                        <p>Tournament entrants:</p>
+                        <div>
+                            {names.map((name, index) => { // Was this.state.names
+                                return (<p key={index}>Name: {name}</p>);
+                            })}
+                        </div>
+                    </Fragment>)
+                }
 {/* Button only shows if there are two or more players */}
                 <div>
                     {this.state.nameCheck ?
-                        (<Link to={'/bracket'} names={names} className="btn btn-primary">
+                        (<button onClick={this.readyToPlay} className="btn btn-primary">
                             Create Tournament
-                        </Link>) : null
+                        </button>) : null
                     }
                 </div>
             </Fragment>
