@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-
+let uniquePlayer = "";
 class TournamentBracket extends Component {
     constructor(props) {
         super(props);
@@ -9,6 +9,20 @@ class TournamentBracket extends Component {
             history: [],
         };
         this.pairPicker = this.pairPicker.bind(this);
+        this.historyCheck = this.historyCheck.bind(this);
+    }
+    historyCheck() {
+        let players = this.state.players;
+        let history = this.state.history;
+        let uniquePlayer = players[Math.floor(Math.random() *players.length)]
+        while (history.indexOf(uniquePlayer) !== -1) {
+            uniquePlayer = players[Math.floor(Math.random() *players.length)]
+        }
+        history.push(uniquePlayer);
+        console.log(players);
+        console.log(history);
+        console.log(uniquePlayer);
+        return uniquePlayer;
     }
     pairPicker() {
         let players = this.state.players;
@@ -16,21 +30,7 @@ class TournamentBracket extends Component {
         for (let i = 1; i <= players.length/2; i += 1) {
             pick.push(
                 <p key={i}>
-                    {
-                        playerOne = players[Math.floor(Math.random() *players.length)]
-                        while (history.indexOf(playerOne) !== -1) {
-                            playerOne = players[Math.floor(Math.random() *players.length)]
-                        };
-                        history.push(playerOne);
-                        return playerOne;
-                    } - {
-                        playerTwo = players[Math.floor(Math.random() *players.length)]
-                        while (history.indexOf(playerTwo) !== -1) {
-                            playerTwo = players[Math.floor(Math.random() *players.length)]
-                        };
-                        history.push(playerTwo);
-                        return playerTwo;
-                    }
+                    {this.historyCheck()} - {this.historyCheck()}
                 </p>
             )
         }
