@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-// import { Link } from 'react-router-dom';
 import TournamentBracket from './TournamentBracket';
 
 
@@ -15,19 +14,18 @@ class NameEntry extends Component {
         this.formInput = this.formInput.bind(this);
         this.addName = this.addName.bind(this);
         this.readyToPlay = this.readyToPlay.bind(this);
-        // console.log(this.state.names);
-    }
+    };
     
     formInput(event) {
         const name = event.target.value;
         this.setState({
             name: name,
         }) 
-    }
+    };
 
     addName(event) {
         event.preventDefault();
-        this.state.names.push(this.state.name) // Had this in the setState, which was setting state to nothing before pushing
+        this.state.names.push(this.state.name)
         this.setState({
             names: this.state.names,
             name: "",
@@ -38,14 +36,15 @@ class NameEntry extends Component {
         this.setState({
             nameCheck: nameCheck,
         })
-    }
+    };
 
     readyToPlay() {
         const readyToPlay = this.state.readyToPlay;
         this.setState({
             readyToPlay: !readyToPlay,
         })
-    }
+    };
+
     render() {
         let names = this.state.names;
         return (
@@ -71,7 +70,6 @@ class NameEntry extends Component {
                         </div>
                     </Fragment>)
                 }
-{/* Button only shows if there are two or more players */}
                 <div>
                     {this.state.nameCheck ?
                         (<button onClick={this.readyToPlay} className="btn btn-primary">
