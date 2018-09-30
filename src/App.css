@@ -1,13 +1,13 @@
-.appBackground {
+body {
     background-color: black;
-    width: 100%;
     text-align: center;
 }
 
 .appContainer {
     background-color: rgb(200,90,190);
     margin: 50px;
-    border-radius: 5px;
+    height: 800px;
+    border-radius: 10px;
     border: 5px solid rgb(120,40,100);
     padding: 50px;
     color: white;
@@ -18,10 +18,20 @@
     font-size: 20px;
 }
 
+section {
+    display: flex;
+    justify-content: center;
+    flex: wrap;
+}
 .appContainer input {
     padding: 12px;
     margin: 5px;
     border-radius: 9px;
+    background: white;
+}
+
+.appContainer input:focus {
+    outline-width: 0;
 }
 
 .appHeaderFooter {
@@ -31,24 +41,21 @@
 .bracket {
     border-radius: 20px;
     border: solid 5px white;
-    padding: 5px;
+    padding: 20px 5px;
+    margin: 20px 20%;
 }
 
-.nameDisplay {
+.entrants {
     background: white;
     color: black;
     border-radius: 9px;
     justify-content: center;
-    /* padding: 5px; */
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
     height: 50px;
     width: 250px;
-    height: 0;
-}
-
-.entrants {
-    margin: 0;
-    background: white;
-    color: black;
+    /* height: 0; */
 }
 
 .spacing {

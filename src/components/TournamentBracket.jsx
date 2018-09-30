@@ -16,6 +16,7 @@ class TournamentBracket extends Component {
         this.goBack = this.goBack.bind(this);
     };
     
+    // History array to avoid the same name being placed in bracketting twice
     historyCheck() {
         let players = this.state.players;
         let history = this.state.history;
@@ -27,6 +28,7 @@ class TournamentBracket extends Component {
         return uniquePlayer;
     };
 
+    // Loop to run once per pair of names in the player array
     pairPicker() {
         let players = this.state.players;
         let pick = [];
@@ -40,6 +42,7 @@ class TournamentBracket extends Component {
         return pick;
     };
 
+    // Return to the previous component view, using ternary to toggle
     goBack() {
         this.setState ({
             reset: true,
@@ -51,7 +54,8 @@ class TournamentBracket extends Component {
             return this.state.players.push(player)
         });
         let players = this.state.players;
-        players.length % 2 !== 0 ? players.push("No opponent! Default to next round") : null; 
+        // If there is an odd number of players, an additional string is added in place
+        players.length % 2 !== 0 ? players.push("(no opponent)") : null; 
         return (
             <Fragment>
                 {
