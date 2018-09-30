@@ -40,8 +40,10 @@ class NameEntry extends Component {
 
     readyToPlay() {
         const readyToPlay = this.state.readyToPlay;
+        const nameCheck = this.state.name.nameCheck;
         this.setState({
             readyToPlay: !readyToPlay,
+            nameCheck: !nameCheck,
         })
     };
 
@@ -49,34 +51,42 @@ class NameEntry extends Component {
         let names = this.state.names;
         return (
             <Fragment>
-                {this.state.readyToPlay ? <TournamentBracket names={names} /> : (
-                    <Fragment>    
-                        <p>
-                            Please add some players for your tournament
-                        </p>
-                        <br />
-                        <form>
-                            <input onChange={this.formInput} type="text" value={this.state.name} />
-                            <button onClick={this.addName} className="btn btn-primary">
-                                Add name
-                            </button>
-                        </form>
-                        <br />
-                        <p>Tournament entrants:</p>
-                        <div>
-                            {names.map((name, index) => { // Was this.state.names
-                                return (<p key={index}>Name: {name}</p>);
-                            })}
-                        </div>
-                    </Fragment>)
+                {
+                    this.state.readyToPlay ? <TournamentBracket names={names} /> : (
+                        <Fragment>    
+                            <p>
+                                Please add some players for your tournament
+                            </p>
+                            <form>
+                                <input onChange={this.formInput} type="text" value={this.state.name} />
+                                <button onClick={this.addName} className="btn btn-primary">
+                                    Add name
+                                </button>
+                            </form>
+                            <div>
+                                {
+                                    this.state.nameCheck ? (
+                                        <div className="spacing">
+                                            <button onClick={this.readyToPlay} className="btn btn-primary">
+                                                Create Tournament
+                                            </button>
+                                        </div>
+                                    ) : null
+                                }
+                            </div>
+                            <p>Tournament entrants:</p>
+                            <div className="nameDisplay">
+                                {
+                                    names.map((name, index) => {
+                                        return (
+                                            <p className="entrants" key={index}>* {name}</p>
+                                        );
+                                    })
+                                }
+                            </div>
+                        </Fragment>
+                    )
                 }
-                <div>
-                    {this.state.nameCheck ?
-                        (<button onClick={this.readyToPlay} className="btn btn-primary">
-                            Create Tournament
-                        </button>) : null
-                    }
-                </div>
             </Fragment>
         );
     }

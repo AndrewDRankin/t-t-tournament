@@ -1,18 +1,23 @@
 import React, { Fragment } from 'react';
 import NameEntry from './components/NameEntry';
+import './App.css';
 
 
 const App = () => {
     return (
-            <Fragment>
-                <p>
-                    Header text
-                </p>
-                <NameEntry />
-                <p>
-                    Footer text
-                </p>
-            </Fragment>
+        <Fragment>
+            <div className="appBackground">
+                <div className="appContainer">
+                    <p className="appHeaderFooter">
+                        Table.. Tennis... Tournament!
+                    </p>
+                    <NameEntry />
+                    <p className="appHeaderFooter">
+                        {/* T...T...T */}
+                    </p>
+                </div>
+            </div>
+        </Fragment>
     )
 };
 

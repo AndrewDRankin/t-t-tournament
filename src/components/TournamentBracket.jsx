@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import NameEntry from './NameEntry';
+
 
 let uniquePlayer = "";
 class TournamentBracket extends Component {
@@ -7,9 +9,11 @@ class TournamentBracket extends Component {
         this.state = {
             players: [],
             history: [],
+            reset: false,
         };
         this.pairPicker = this.pairPicker.bind(this);
         this.historyCheck = this.historyCheck.bind(this);
+        this.goBack = this.goBack.bind(this);
     };
     
     historyCheck() {
@@ -28,12 +32,18 @@ class TournamentBracket extends Component {
         let pick = [];
         for (let i = 1; i <= players.length/2; i += 1) {
             pick.push(
-                <p key={i}>
-                    {this.historyCheck()} - {this.historyCheck()}
+                <p className="bracket" key={i}>
+                    {this.historyCheck()} Vs. {this.historyCheck()}
                 </p>
             )
         }
         return pick;
+    };
+
+    goBack() {
+        this.setState ({
+            reset: true,
+        })
     };
 
     render() {
@@ -41,13 +51,24 @@ class TournamentBracket extends Component {
             return this.state.players.push(player)
         });
         let players = this.state.players;
-        players.length % 2 !== 0 ? players.push("Default to next round") : null; 
+        players.length % 2 !== 0 ? players.push("No opponent! Default to next round") : null; 
         return (
             <Fragment>
-                <div>
-                    Pairings
-                    {this.pairPicker()}
-                </div>
+                {
+                    this.state.reset ? <NameEntry /> : (
+                        <Fragment>
+                            <div>
+                                Matches
+                                {this.pairPicker()}
+                            </div>
+                            <div>
+                                <button onClick={this.goBack} className="btn btn-primary">
+                                    Go again!
+                                </button>
+                            </div>
+                        </Fragment>
+                    )
+                }
             </Fragment>
         );
     }
