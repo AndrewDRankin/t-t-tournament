@@ -1,18 +1,39 @@
 @media only screen and (max-width: 1100px) {
     .appContainer {
         margin: 20px 50px;
+        background: linear-gradient(to bottom right, rgb(40,100,210), rgb(200,90,190));
+        border: 5px solid rgb(50,20,100);
         transition: all .4s linear .2s;
+    }
+    .button {
+        background: rgb(20,160,255);
+        font-size: 1em;
     }
 }
 
 @media only screen and (max-width: 750px) {
     .appContainer {
         margin: 5px 5px;
+        background: linear-gradient(to bottom right, rgb(180,100,210), rgb(200,50,100));
         transition: all .4s linear .2s;
     }
 
     .appHeaderFooter {
         font-size: 50px;
+        transition: all .2s linear;
+    }
+    .mainText {
+        font-size: 1em;
+        transition: all .2s linear;
+    }
+    .entrants {
+        margin: 5px;
+        height: 38px;
+        width: 100%;
+        transition: all .2s linear;
+    }
+    .button {
+        font-size: 1em;
         transition: all .2s linear;
     }
 }

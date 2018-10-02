@@ -81,7 +81,7 @@ class NameEntry extends Component {
                                         {
                                             names.map((name, index) => {
                                                 return (
-                                                    <p className="entrants" key={index}> {name}</p>
+                                                    <p className="entrants" key={index}>{name}</p>
                                                 );
                                             })
                                         }
@@ -92,7 +92,8 @@ class NameEntry extends Component {
                                             this.state.nameCheck ? (
                                                 <div className="spacing">
                                                     <button onClick={this.readyToPlay} className="button">
-                                                        Create Tournament
+                                                        Create<br />
+                                                        Tournament
                                                     </button>
                                                 </div>
                                             ) : null
