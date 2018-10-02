@@ -10,7 +10,7 @@ const App = () => {
             <div className="appBackground">
                 <div className="appContainer">
                     <p className="appHeaderFooter">
-                        Table.. Tennis... Tournament!
+                        Table... Tennis... Tournament!
                     </p>
                     <NameEntry />
                     <p className="appHeaderFooter">

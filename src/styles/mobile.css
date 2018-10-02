@@ -1,15 +1,18 @@
 @media only screen and (max-width: 1100px) {
     .appContainer {
         margin: 20px 50px;
+        transition: all .4s linear .2s;
     }
 }
 
 @media only screen and (max-width: 750px) {
     .appContainer {
         margin: 5px 5px;
+        transition: all .4s linear .2s;
     }
 
     .appHeaderFooter {
         font-size: 50px;
+        transition: all .2s linear;
     }
 }

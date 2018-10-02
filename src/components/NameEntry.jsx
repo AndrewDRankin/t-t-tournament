@@ -61,43 +61,45 @@ class NameEntry extends Component {
             <Fragment>
                 {
                     this.state.readyToPlay ? <TournamentBracket names={names} /> : (
-                        <Fragment className="mainText">    
-                            <p>
-                                Please add players
-                            </p>
-                            
-                            <form>
-                                <input onChange={this.formInput} type="text" value={this.state.name} />
-                                <button onClick={this.addName} className="button">
-                                    Add name
-                                </button>
-                            </form>
-                            
-                            <p>Tournament entrants:</p>
-                            
-                            <section>
-                                <div className="nameDisplay">
-                                    {
-                                        names.map((name, index) => {
-                                            return (
-                                                <p className="entrants" key={index}> {name}</p>
-                                            );
-                                        })
-                                    }
-                                </div>
+                        <Fragment>    
+                            <main className="mainText">
+                                <p>
+                                    Please add players
+                                </p>
+                                
+                                <form>
+                                    <input onChange={this.formInput} type="text" value={this.state.name} />
+                                    <button onClick={this.addName} className="button">
+                                        Add name
+                                    </button>
+                                </form>
+                                
+                                <p>Tournament entrants:</p>
+                                
+                                <section>
+                                    <div className="nameDisplay">
+                                        {
+                                            names.map((name, index) => {
+                                                return (
+                                                    <p className="entrants" key={index}> {name}</p>
+                                                );
+                                            })
+                                        }
+                                    </div>
 
-                                <div>
-                                    {
-                                        this.state.nameCheck ? (
-                                            <div className="spacing">
-                                                <button onClick={this.readyToPlay} className="button">
-                                                    Create Tournament
-                                                </button>
-                                            </div>
-                                        ) : null
-                                    }
-                                </div>
-                            </section>
+                                    <div>
+                                        {
+                                            this.state.nameCheck ? (
+                                                <div className="spacing">
+                                                    <button onClick={this.readyToPlay} className="button">
+                                                        Create Tournament
+                                                    </button>
+                                                </div>
+                                            ) : null
+                                        }
+                                    </div>
+                                </section>
+                            </main>
                         </Fragment>
                     )
                 }
