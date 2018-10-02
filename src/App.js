@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import NameEntry from './components/NameEntry';
-import './App.css';
+import './styles/App.css';
+import './styles/mobile.css';
 
 
 const App = () => {

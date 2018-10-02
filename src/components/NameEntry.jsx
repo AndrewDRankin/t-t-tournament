@@ -61,14 +61,14 @@ class NameEntry extends Component {
             <Fragment>
                 {
                     this.state.readyToPlay ? <TournamentBracket names={names} /> : (
-                        <Fragment>    
+                        <Fragment className="mainText">    
                             <p>
-                                Please add some players for your tournament
+                                Please add players
                             </p>
                             
                             <form>
                                 <input onChange={this.formInput} type="text" value={this.state.name} />
-                                <button onClick={this.addName} className="btn btn-primary">
+                                <button onClick={this.addName} className="button">
                                     Add name
                                 </button>
                             </form>
@@ -90,7 +90,7 @@ class NameEntry extends Component {
                                     {
                                         this.state.nameCheck ? (
                                             <div className="spacing">
-                                                <button onClick={this.readyToPlay} className="btn btn-primary">
+                                                <button onClick={this.readyToPlay} className="button">
                                                     Create Tournament
                                                 </button>
                                             </div>

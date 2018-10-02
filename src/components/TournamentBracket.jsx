@@ -66,7 +66,7 @@ class TournamentBracket extends Component {
                                 {this.pairPicker()}
                             </div>
                             <div>
-                                <button onClick={this.goBack} className="btn btn-primary">
+                                <button onClick={this.goBack} className="button">
                                     Go again!
                                 </button>
                             </div>
