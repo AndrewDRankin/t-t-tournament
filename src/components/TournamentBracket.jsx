@@ -2,12 +2,12 @@ import React, { Component, Fragment } from 'react';
 import NameEntry from './NameEntry';
 
 
-let uniquePlayer = "";
+let uniqueId = "";
 class TournamentBracket extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            players: [],
+            players: this.props.names,
             history: [],
             reset: false,
         };
@@ -20,12 +20,12 @@ class TournamentBracket extends Component {
     historyCheck() {
         let players = this.state.players;
         let history = this.state.history;
-        let uniquePlayer = players[Math.floor(Math.random() *players.length)]
-        while (history.indexOf(uniquePlayer) !== -1) {
-            uniquePlayer = players[Math.floor(Math.random() *players.length)]
-        }
-        history.push(uniquePlayer);
-        return uniquePlayer;
+        // let uniqueId = players.filter(val => [Math.floor(Math.random() *players.length)]
+        // while (history.indexOf(uniqueId) !== -1) {
+        //     uniqueId = players[Math.floor(Math.random() *players.length)]
+        // }
+        // history.push(uniqueId);
+        // return uniqueId.name;
     };
 
     // Loop to run once per pair of names in the player array
@@ -50,12 +50,9 @@ class TournamentBracket extends Component {
     };
 
     render() {
-        this.props.names.map((player, index) => {
-            return this.state.players.push(player)
-        });
         let players = this.state.players;
         // If there is an odd number of players, an additional string is added in place
-        players.length % 2 !== 0 ? players.push("(no opponent)") : null; 
+        players.length % 2 !== 0 ? players.push({"name": "(no opponent)", "id": 0}) : null; 
         return (
             <Fragment>
                 {

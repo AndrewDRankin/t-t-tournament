@@ -7,9 +7,10 @@ class NameEntry extends Component {
         super(props);
         this.state = {
             name: "",
-            names: [],
-            nameCheck: false,
+            names: {},
+            minPlayers: false,
             readyToPlay: false,
+            idKey: 1,
         }
         this.formInput = this.formInput.bind(this);
         this.addName = this.addName.bind(this);
@@ -29,29 +30,32 @@ class NameEntry extends Component {
         event.preventDefault();
         let name = this.state.name;
         let names = this.state.names;
-        let nameCheck = this.state.nameCheck;
-        if (names.indexOf(name) !== -1) {
-            return name.concat(" 2");
-        }
-        console.log(names);
-        names.push(name)
+        let minPlayers = this.state.minPlayers;
+        let idKey = this.state.idKey;
+        names[idKey]=name;
+        idKey += 1;
         this.setState({
             names: names,
             name: "",
+            idKey: idKey,
         })
     // Only reveals tournament creation button when at least two strings have been entered
-        names.length >= 2 ? nameCheck = true : nameCheck = false;
+        names.length >= 2 ? minPlayers = true : minPlayers = false;
         this.setState({
-            nameCheck: nameCheck,
+            minPlayers: minPlayers,
         })
     };
-    // Button toggles ready state with ternary, which hides this component's render, and shows the tournament component
+    // Button toggles ready state with ternary, which hides this component's render,
+    // and shows the tournament component. Also adds an item id so names can be duplicated
     readyToPlay() {
+        // this.state.names.map((name, index) => {
+        //     return name.id = index+1
+        // });
         const readyToPlay = this.state.readyToPlay;
-        const nameCheck = this.state.name.nameCheck;
+        const minPlayers = this.state.name.minPlayers;
         this.setState({
             readyToPlay: !readyToPlay,
-            nameCheck: !nameCheck,
+            minPlayers: !minPlayers,
         })
     };
 
@@ -60,7 +64,7 @@ class NameEntry extends Component {
         return (
             <Fragment>
                 {
-                    this.state.readyToPlay ? <TournamentBracket names={names} /> : (
+                    this.state.readyToPlay ? <TournamentBracket names={names} /> : ( 
                         <Fragment>    
                             <main className="mainText">
                                 <p>
@@ -78,18 +82,18 @@ class NameEntry extends Component {
                                 
                                 <section>
                                     <div className="nameDisplay">
-                                        {
+                                        {/* {
                                             names.map((name, index) => {
                                                 return (
                                                     <p className="entrants" key={index}>{name}</p>
                                                 );
                                             })
-                                        }
+                                        } */}
                                     </div>
 
                                     <div>
                                         {
-                                            this.state.nameCheck ? (
+                                            this.state.minPlayers ? (
                                                 <div className="spacing">
                                                     <button onClick={this.readyToPlay} className="button">
                                                         Create<br />
